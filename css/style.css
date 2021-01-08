@@ -1,0 +1,661 @@
+* {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue";
+  margin: 0;
+  padding: 0;
+  /*border: 0;*/
+}
+
+.w3-container {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+#body {
+  font-family: "Arial", "Helvetica", sans-serif;
+  color: #404040;
+  background: #fff;
+  /* Get rid of accidental text selection on drag */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+}
+
+h1 {
+  text-align: center;
+}
+
+#title-bar-subtitle {
+  font-size: 75%;
+}
+
+#title-bar-separator {
+  padding-left: 10px;
+  padding-right: 10px;
+  visibility: hidden;
+}
+
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.5em !important;
+}
+
+.title{
+  height: 35px;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+#statcontent{
+  float: left;
+  position: fixed;
+  top: 15;
+}
+
+#statcontent.sticky {
+  top: 15;
+}
+
+.focus text{
+  font-size:11px;
+}
+
+.page-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#header {
+  flex: 0 0 auto;
+  height: 55px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #404040;
+  margin-bottom: 10px;
+}
+
+#title-bar {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-container {
+  flex: 1 1 auto;
+
+  display: flex;
+  align-items: stretch;
+
+  width: 100%;
+}
+
+.panel-container {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  width: 100%;
+}
+
+.panel-left {
+  flex: 0 0 auto;
+  /* only manually resize */
+}
+
+.panel-right {
+  flex: 1 1 auto;
+  /* resizable */
+  width: 100%;
+}
+
+/* vertical panel */
+.panel-container-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-top {
+  flex: 0 0 auto;
+  /* only manually resize */
+}
+
+.panel-bottom {
+  flex: 1 1 auto;
+  /* resizable */
+}
+
+.title-and-content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+.content {
+  flex-grow: 1;
+  border-radius: 10px;
+  padding: 15px;
+  padding-top: 5px;
+  background: #ffffff;
+  margin-bottom: 10px;
+}
+
+.scrollable {
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.ew-resize {
+  border-right: dashed;
+}
+
+.ns-resize {
+  border-bottom: dashed;
+}
+
+.ns-resize, .ew-resize {
+  border-width: 1px;
+  border-color: #404040;
+}
+
+#container-list-3d-table {
+  width: 750px;
+}
+
+#tractlist-with-title {
+  width: 240px;
+}
+
+#threejsbrain-with-title {
+  flex: 1 1 auto;
+  /* There was an issue where this div would not shrink when the user
+   * shortened the main left panel. This next line fixes that issue. It
+   * makes absolutely no sense to me why this works. But it works.
+   * I hereby bequeath this bug, this comment, and this hacky fix to
+   * the flexbox ninja brave enough to give it a legitimate solution. */
+  width: 30%;
+  /*height: 50%;*/
+}
+
+#three-and-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#threejsbrain {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+
+  width: 100%;
+  min-width: 200px;
+  min-height: 200px;
+  cursor: pointer;
+}
+
+#threejsbrain > canvas {
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-self: stretch;
+  min-width: 200px;
+  min-height: 200px;
+}
+
+.gui-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#container-plots {
+  width: 400px;
+  flex: 1 1 auto;
+}
+
+#plots-and-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#table-and-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#download-subjects, #download-nodes{
+  dispay: none;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.download-file-button + label{
+  border-radius: 5px;
+  color: #404040 ;
+  background: #d9d9d9 ;
+  padding: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin: 2px 2px 0px 2px;
+  border-style: solid;
+  border-color: #d9d9d9 ;
+  border-width: 1px;
+  /* font-size: 1.25em; */
+  /* font-weight: 700; */
+  display: inline-block;
+  cursor: pointer; /* “hand” cursor */}
+
+.download-file-button:focus + label,
+.download-file-button + label:hover {
+  color: #d9d9d9 ;
+  background: #404040 ;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+}
+
+#tractlist {
+  /* Set a height restriction for the tract list. We can use a
+   * ridiculously small number here because flexbox will grow
+   * this item to match the height of the 3D window. We only
+   * need the height to be less than that of the 3D window. */
+  height: 1px;
+  text-align: left;
+}
+
+#tractdetails {
+  height: 1px;
+  text-align: center;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+#table {
+  height: 1px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align: center;
+}
+
+.tractlist-explanation {
+  text-align: center;
+}
+
+/*----------------------------*/
+/* Begin tractlist formatting */
+/*----------------------------*/
+#selectAllBox {
+  font-weight: bold;
+  cursor:pointer;
+}
+
+/*change label hover effect for checkbox*/
+input[type=checkbox] {
+  display:none;
+}
+
+input[type=checkbox]+label{
+  line-height: 30px;
+  cursor:pointer;
+}
+
+input[type=checkbox]:hover {
+  -webkit-box-shadow: inset 0 0 2px 2px rgba(82,168,236,.6);
+}
+
+label, input[type=checkbox] {
+  -moz-transition: all .2s ease-in;
+  -o-transition: all .2s ease-in;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+}
+
+label:hover, label:active, input:hover+label, input:active+label {
+  background:#ffffcc;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.line {
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap:round;
+}
+
+.tracts {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+.plot
+{
+  fill:#eeeeee;
+  border-spacing: 10px;
+}
+.plot_text{
+}
+
+.row
+{
+  float: left;
+  clear: none;
+  display: table;
+  width: 100%; /*Optional*/
+  table-layout: fixed; /*Optional*/
+  border-spacing: 10px; /*Optional*/
+}
+
+/*------------------------*/
+/* Begin table formatting */
+/*------------------------*/
+.t_header rect {
+  fill: #404040;
+}
+
+.t_header text {
+  font: 13px;
+  fill: #eeeeee;
+  font-weight: bold;
+  text-anchor: middle;
+}
+
+.cell rect {
+  fill: #dddddd;
+  cursor: pointer;
+}
+
+.cell text {
+  font: 13px;
+  text-anchor: middle;
+  cursor: pointer;
+}
+
+/*------------------------*/
+/* Begin graph formatting */
+/*------------------------*/
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #AFBABF;
+  shape-rendering: crispEdges;
+}
+.axis text {
+  font-size: 14px;
+}
+
+.area {
+  stroke: none;
+  fill: #AFBABF;
+}
+
+.x.axis path {
+  display: none;
+}
+.y.axis path {
+  display: none;
+}
+
+.brush .extent {
+  stroke: #f09f8c;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+
+.brushExt {
+  font-size: 0.85em;
+}
+
+#three-gui-container {
+  position: absolute;
+  display: block;
+  right: 5px;
+  bottom: 5px;
+}
+
+#table-gui-container {
+  position: absolute;
+  display: block;
+  right: 5px;
+  bottom: 5px;
+}
+
+#plots-gui-container {
+  position: absolute;
+  display: block;
+  right: 5px;
+  bottom: 5px;
+}
+
+/*
+Special hover stuff
+*/
+
+#tractlist-with-title .tractlist-explanation {
+  visibility: hidden;
+}
+
+#tractlist-with-title:hover .tractlist-explanation  {
+  visibility: visible;
+}
+
+#threejsbrain-with-title .tractlist-explanation {
+  visibility: hidden;
+}
+
+#threejsbrain-with-title:hover .tractlist-explanation  {
+  visibility: visible;
+}
+
+#table-with-title .tractlist-explanation {
+  visibility: hidden;
+}
+
+#table-with-title:hover .tractlist-explanation  {
+  visibility: visible;
+}
+
+#container-plots .tractlist-explanation {
+  visibility: hidden;
+}
+
+#container-plots:hover .tractlist-explanation  {
+  visibility: visible;
+}
+
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1001;
+}
+
+#loader {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+
+  border: 3px solid transparent;
+  border-top-color: #1F77B4;
+  border-radius: 50%;
+  z-index: 1500;
+
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+#loader:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 3px solid transparent;
+  border-top-color: #D62728;
+  border-radius: 50%;
+
+  -webkit-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite;
+}
+
+#loader:after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 3px solid transparent;
+  border-top-color: #DBDB8D;
+  border-radius: 50%;
+
+  -webkit-animation: spin 1.5s linear infinite;
+  animation: spin 1.5s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0%   {
+    -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(0deg);  /* IE 9 */
+    transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+  }
+  100% {
+    -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(360deg);  /* IE 9 */
+    transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+  }
+}
+@keyframes spin {
+  0%   {
+    -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(0deg);  /* IE 9 */
+    transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+  }
+  100% {
+    -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(360deg);  /* IE 9 */
+    transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+  }
+}
+
+#loader-wrapper .loader-section {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: #404040;
+  opacity: 0.90;
+  z-index: 1000;
+}
+
+#loader-wrapper .loader-section.section-left {
+  left: 0;
+}
+
+#loader-wrapper .loader-section.section-right {
+  right: 0;
+}
+
+/* Loaded */
+.loaded #loader-wrapper .loader-section.section-left {
+  -webkit-transform: translateX(-100%);  /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform: translateX(-100%);  /* IE 9 */
+  transform: translateX(-100%);  /* Firefox 16+, IE 10+, Opera */
+}
+
+.loaded #loader-wrapper .loader-section.section-right {
+  -webkit-transform: translateX(100%);  /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform: translateX(100%);  /* IE 9 */
+  transform: translateX(100%);  /* Firefox 16+, IE 10+, Opera */
+}
+
+.loaded #loader-wrapper .loader-section.section-right,
+.loaded #loader-wrapper .loader-section.section-left {
+  -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+  transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+}
+
+.loaded #loader {
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.loaded #loader-wrapper {
+  visibility: hidden;
+
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
+
+  -webkit-transition: all 0.3s 1s ease-out;
+  transition: all 0.3s 1s ease-out;
+}
+
+/* TOOLTIP */
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    font: 12px sans-serif;
+    background: #f4f4f4;
+    border: 1px;
+    border-radius: 8px;
+    border-style: solid;
+    pointer-events: none;
+}
+
+
+
+.titleTip {
+  margin: .2em;
+}
+
+.titleTip hr {
+  margin: 0.5em;
+}
+
+.zTip {
+  margin-bottom: .2em;
+}
+
+.disabled {
+  cursor: not-allowed;
+
+  opacity: 0.5;
+}
+
+
+.binderBtn {
+  margin-right: 1em;
+}
